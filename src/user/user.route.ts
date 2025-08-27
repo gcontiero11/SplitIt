@@ -1,5 +1,5 @@
 import { getUsersHandler, createUserHandler } from "./user.controller";
-import { userSchema } from "./user.schema";
+import { userSchema } from "./schemas/user.schema";
 import { FastifyTypedInstance } from "../types";
 
 async function userRoutes(app: FastifyTypedInstance) {

@@ -1,12 +1,13 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { User } from "./user.schema";
+import { User } from "./schemas/user.schema";
+import { CreateUserType } from "./schemas/user.create-user";
 
 async function getUsersHandler(request: FastifyRequest, reply: FastifyReply) {
   return { message: "List of users" };
 }
 
 async function createUserHandler(
-  request: FastifyRequest<{ Body: User }>,
+  request: FastifyRequest<{ Body: CreateUserType }>,
   reply: FastifyReply,
 ) {
   const user: User = request.body;

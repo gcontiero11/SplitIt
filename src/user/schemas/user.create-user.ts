@@ -1,13 +1,13 @@
-import { z } from "zod";
+import z from "zod";
 
-const userSchema = z.object({
+const createUserSchema = z.object({
   firstName: z
     .string()
     .min(2, "First name must be at least 2 characters")
     .max(50, "First name must be at most 50 characters")
     .regex(
       /^[a-zA-ZÀ-ÿ\s]+$/,
-      "First name can only contain letters and spaces",
+      "First name can only contain letters and spaces"
     ),
 
   lastName: z
@@ -20,7 +20,7 @@ const userSchema = z.object({
     .string()
     .regex(
       /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-      "Invalid email format",
+      "Invalid email format"
     )
     .toLowerCase(),
 
@@ -28,7 +28,7 @@ const userSchema = z.object({
     .string()
     .regex(
       /^\(\d{2}\)\s\d{4,5}-\d{4}$/,
-      "Phone must be in format (XX) XXXXX-XXXX or (XX) XXXX-XXXX",
+      "Phone must be in format (XX) XXXXX-XXXX or (XX) XXXX-XXXX"
     ),
 
   password: z
@@ -36,9 +36,9 @@ const userSchema = z.object({
     .min(8, "Password must be at least 8 characters")
     .regex(
       /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/,
-      "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character",
+      "Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character"
     ),
 });
+type CreateUserType = z.infer<typeof createUserSchema>;
 
-type User = z.infer<typeof userSchema>;
-export { userSchema, User };
+export { createUserSchema, CreateUserType };
