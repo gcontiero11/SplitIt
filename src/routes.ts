@@ -1,4 +1,3 @@
-import { FastifyInstance } from "fastify";
 import { userRoutes } from "./user/user.route";
 import { FastifyTypedInstance } from "./types";
 
